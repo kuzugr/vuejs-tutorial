@@ -7,7 +7,9 @@
     </p>
     <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
     <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
-    <p v-show="!canBuy"></p>
+    <p v-show="!canBuy">
+      ログイン済みでなければ購入できません。
+    </p>
   </div>
 </template>
 
@@ -36,7 +38,8 @@ export default {
   components: {bButton, cButton},
   data () {
     return {
-      items: items
+      items: items,
+      canBuy: false
     }
   },
   filters: {
